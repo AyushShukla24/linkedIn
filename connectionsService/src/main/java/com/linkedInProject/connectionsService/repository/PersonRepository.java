@@ -4,6 +4,7 @@ package com.linkedInProject.connectionsService.repository;
 import com.linkedInProject.connectionsService.entity.Person;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,5 +18,5 @@ public interface PersonRepository extends Neo4jRepository<Person, Long> {
             where personA.userId = $userId
             return personB
             """)
-    List<Person> getFirstDegreeConeections(Long userId);
+    List<Person> getFirstDegreeConeections(@Param("userId") Long userId);
 }
