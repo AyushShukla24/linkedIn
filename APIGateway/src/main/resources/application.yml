@@ -21,6 +21,7 @@ spring:
                 - Path=/api/v1/posts/**
               filters:
                 - StripPrefix=2
+                - name: AuthenticationFilter
 
             - id: connections-service
               uri: lb://CONNECTIONS-SERVICE
@@ -28,9 +29,13 @@ spring:
                 - Path=/api/v1/connections/**
               filters:
                 - StripPrefix=2
+                - name: AuthenticationFilter
 
 server:
   port: 8085
+
+jwt:
+  secretKey: 8f7c9a2e5d1b4c6f9a8e3d7b2c5f1a6e9d4b8c7f2a5e1d3c6b9f4a8e2d7c5b1
 
 eureka:
   client:
